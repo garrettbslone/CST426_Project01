@@ -10,10 +10,15 @@ public class IngredientSpawner : MonoBehaviour
     {
         SpawnCommand spawn = new SpawnCommand(this, ingredient);
         spawn.Execute();
+
+        CheckOrderManager.Instance.AddIngredientEntered(ingredient.GetComponent<Ingredient>());
+        Debug.Log("Ingredient added");
     }
     
     public void DespawnIngredient()
     {
         CommandManager.Instance.Undo();
+        
+        CheckOrderManager.Instance.RemoveIngredientEntered(gameObject.GetComponent<Ingredient>());
     }
 }
