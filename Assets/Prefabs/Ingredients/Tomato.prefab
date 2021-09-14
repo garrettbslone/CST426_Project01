@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 615273051318673303}
   - component: {fileID: 6961412546514881160}
   m_Layer: 0
-  m_Name: Ingredient
+  m_Name: Tomato
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cc27392d000523987135eb71a9a79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: Tomato
+  color: {r: 1, g: 0.018271528, b: 0, a: 0}
