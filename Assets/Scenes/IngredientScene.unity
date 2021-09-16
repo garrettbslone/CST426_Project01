@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4bd3a682b010fcda4e7feaeac9b1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredients: []
 --- !u!4 &141991456
 Transform:
   m_ObjectHideFlags: 0
@@ -1256,14 +1257,13 @@ MonoBehaviour:
       - m_Target: {fileID: 141991455}
         m_TargetAssemblyTypeName: IngredientSpawner, Assembly-CSharp
         m_MethodName: SpawnIngredient
-        m_Mode: 2
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 615273051318673300, guid: e89db5f504d6831e5a2c730e7a11c7e6,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bun
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1719272834

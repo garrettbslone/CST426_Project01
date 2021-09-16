@@ -15,15 +15,20 @@ public class SpawnCommand : CommandManager.ICommand
 
     public void Execute()
     {
-        // TODO: Add ingredient to CheckOrder list
         ingredient = GameObject.Instantiate(this.ingredient, spawner.transform);
         ingredient.transform.position = spawner.transform.position;
+        CheckOrderManager.Instance.AddIngredientEntered(ingredient.GetComponent<Ingredient>());
         CommandManager.Instance.AddCommand(this);
     }
 
     public void Undo()
     {
-        // TODO: Remove ingredient from CheckOrder list
+         CheckOrderManager.Instance.RemoveIngredientEntered(ingredient.GetComponent<Ingredient>());
         GameObject.Destroy(ingredient);   
+    }
+
+    public GameObject GetIngredient()
+    {
+        return ingredient;
     }
 }
