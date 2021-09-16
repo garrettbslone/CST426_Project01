@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-    string type;
-    Color color;
+    public string type;
+    public Color color;
+
+    void Awake()
+    {
+        this.GetComponent<Renderer>().material.SetColor("_Color", color);
+    }
+
+
 
     public Ingredient(string type, Color color)
     {

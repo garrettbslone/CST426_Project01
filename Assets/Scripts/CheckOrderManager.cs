@@ -60,7 +60,7 @@ public class CheckOrderManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("You were correct!");
+            Debug.Log("You were incorrect!");
             GamePlayManager.Instance.Strike();
         }
     }
