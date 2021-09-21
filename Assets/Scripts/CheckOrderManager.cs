@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CheckOrderManager : MonoBehaviour
 {
-    private static List<Ingredient> expected;
-    private static List<Ingredient> entered;
+    private static Stack<string> expected;
+    private static Stack<string> entered;
     
     public static CheckOrderManager Instance { get; private set; }
 
@@ -22,8 +22,8 @@ public class CheckOrderManager : MonoBehaviour
     void Start()
     {
         // TODO: get expected from scene
-        expected = new List<Ingredient>();
-        entered = new List<Ingredient>();
+        expected = new Stack<string>();
+        entered = new Stack<string>();
         
         // TODO: dynamically update timer
         timeRemaining = 100;
@@ -49,9 +49,17 @@ public class CheckOrderManager : MonoBehaviour
     public void Check()
     {
         Debug.Log("Expected: ");
-        expected.ForEach(Debug.Log);
+        // expected.ForEach(Debug.Log);
+        foreach (string s in expected)
+        {
+            Debug.Log(s);
+        }
         Debug.Log("\nEntered: ");
-        entered.ForEach(Debug.Log);
+        // entered.ForEach(Debug.Log);
+        foreach (string s in entered)
+        {
+            Debug.Log(s);
+        }
 
         if (entered.SequenceEqual(expected))
         {
@@ -64,34 +72,21 @@ public class CheckOrderManager : MonoBehaviour
             GamePlayManager.Instance.Strike();
         }
     }
+    
+    public void AddIngredientEntered(string ingredient)
+    {
+        // entered.Add(ingredient);
+        entered.Push(ingredient);
+    }
+    
+    public void RemoveIngredientEntered(string ingredient)
+    {
+        //entered.Remove(ingredient);
+        entered.Pop();
+    }
 
-    private static void AddIngredient(Ingredient ingredient, List<Ingredient> ingredients)
+    public void SetExpected(Stack<string> newExpected)
     {
-        ingredients.Add(ingredient);
-    }
-    
-    public void AddIngredientExpected(Ingredient ingredient)
-    {
-        AddIngredient(ingredient, expected);
-    }
-    
-    public void AddIngredientEntered(Ingredient ingredient)
-    {
-        AddIngredient(ingredient, entered);
-    }
-    
-    private static void RemoveIngredient(Ingredient ingredient, List<Ingredient> ingredients)
-    {
-        ingredients.Remove(ingredient);
-    }
-    
-    public void RemoveIngredientExpected(Ingredient ingredient)
-    {
-        RemoveIngredient(ingredient, expected);
-    }
-    
-    public void RemoveIngredientEntered(Ingredient ingredient)
-    {
-        RemoveIngredient(ingredient, entered);
+        expected = newExpected;
     }
 }
