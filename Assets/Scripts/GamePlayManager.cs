@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class GamePlayManager : MonoBehaviour
 {
-    private Text score, strikes;
-    private bool scored, strike;
+    private Text score, strikes, timer;
     private int _score, _strikes;
+
+    private const int MAX_STRIKES = 3;
 
     public static GamePlayManager Instance { get; private set; }
 
@@ -17,9 +18,7 @@ public class GamePlayManager : MonoBehaviour
     {
         score = GameObject.Find("ScoreText").GetComponent<Text>();
         strikes = GameObject.Find("StrikesText").GetComponent<Text>();
-
-        scored = false;
-        strike = false;
+        timer = GameObject.Find("TimerText").GetComponent<Text>();
 
         _score = 0;
         _strikes = 0;
@@ -45,5 +44,10 @@ public class GamePlayManager : MonoBehaviour
     {
         _strikes++;
         strikes.text = "Strikes: " + _strikes;
+    }
+
+    public void Time(float time)
+    {
+        timer.text = $"Time Left: {time:0.##}s";
     }
 }
