@@ -13,7 +13,9 @@ public class DialogueManager : MonoBehaviour
 
     public Button nextButton;
 
-    private bool endDialogue;
+    public CustomerSpawn cust;
+
+    public bool endDialogue;
 
     void Start()
     {
@@ -33,7 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        animator.SetBool("IsOpen", true);        
+        animator.SetBool("IsOpen", true);
 
     }
 
@@ -71,6 +73,9 @@ public class DialogueManager : MonoBehaviour
             endDialogue = true;
             i = 0;
             EndDialogue();
+            Destroy(GameObject.FindWithTag("Customer"));
+            cust.isSpawned = false;
+            CustomerMove.isStopped = false;
         }
 
 
