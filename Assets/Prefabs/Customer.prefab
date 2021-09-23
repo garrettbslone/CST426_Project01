@@ -1,9 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &5727470334143634444
 =======
 --- !u!1 &2527763365012886834
+>>>>>>> Stashed changes
+=======
+--- !u!1 &8154440613213216641
 >>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +16,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   - component: {fileID: 5727470334143634440}
   - component: {fileID: 5727470334143634441}
@@ -28,14 +33,28 @@ GameObject:
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
+=======
+  - component: {fileID: 7647679543740243201}
+  - component: {fileID: 145421099227635694}
+  - component: {fileID: 6356669888938095367}
+  - component: {fileID: 1994494639859913466}
+  - component: {fileID: 2377290108041121873}
+  m_Layer: 0
+  m_Name: Customer
+  m_TagString: Customer
+>>>>>>> Stashed changes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!4 &5727470334143634440
 =======
 --- !u!4 &2527763365012886838
+>>>>>>> Stashed changes
+=======
+--- !u!4 &7647679543740243201
 >>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
@@ -43,9 +62,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 5727470334143634444}
 =======
   m_GameObject: {fileID: 2527763365012886834}
+>>>>>>> Stashed changes
+=======
+  m_GameObject: {fileID: 8154440613213216641}
 >>>>>>> Stashed changes
   m_LocalRotation: {x: -0.0004564739, y: -0.0008090157, z: 0.00033268868, w: 0.9999995}
   m_LocalPosition: {x: 4.91, y: 1.5, z: -5.4}
@@ -55,15 +78,20 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.052, y: -0.093, z: 0.038}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!33 &5727470334143634441
 =======
 --- !u!33 &2527763365012886839
+>>>>>>> Stashed changes
+=======
+--- !u!33 &145421099227635694
 >>>>>>> Stashed changes
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_GameObject: {fileID: 5727470334143634444}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
@@ -73,15 +101,24 @@ MeshFilter:
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2527763365012886836
 >>>>>>> Stashed changes
+=======
+  m_GameObject: {fileID: 8154440613213216641}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6356669888938095367
+>>>>>>> Stashed changes
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 5727470334143634444}
 =======
   m_GameObject: {fileID: 2527763365012886834}
+>>>>>>> Stashed changes
+=======
+  m_GameObject: {fileID: 8154440613213216641}
 >>>>>>> Stashed changes
   m_Enabled: 1
   m_CastShadows: 1
@@ -118,9 +155,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!136 &5727470334143634443
 =======
 --- !u!136 &2527763365012886837
+>>>>>>> Stashed changes
+=======
+--- !u!136 &1994494639859913466
 >>>>>>> Stashed changes
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -128,9 +169,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 5727470334143634444}
 =======
   m_GameObject: {fileID: 2527763365012886834}
+>>>>>>> Stashed changes
+=======
+  m_GameObject: {fileID: 8154440613213216641}
 >>>>>>> Stashed changes
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -140,9 +185,13 @@ CapsuleCollider:
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &8362999161979578052
 =======
 --- !u!114 &6853554610513613732
+>>>>>>> Stashed changes
+=======
+--- !u!114 &2377290108041121873
 >>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,9 +199,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 5727470334143634444}
 =======
   m_GameObject: {fileID: 2527763365012886834}
+>>>>>>> Stashed changes
+=======
+  m_GameObject: {fileID: 8154440613213216641}
 >>>>>>> Stashed changes
   m_Enabled: 1
   m_EditorHideFlags: 0
