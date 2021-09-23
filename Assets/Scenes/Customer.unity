@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderText: {fileID: 1192394272}
+  buttonText: {fileID: 0}
   animator: {fileID: 1712413369}
   nextButton: {fileID: 911250904}
 --- !u!4 &349141383
@@ -552,7 +553,7 @@ GameObject:
   - component: {fileID: 870405597}
   - component: {fileID: 870405596}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
