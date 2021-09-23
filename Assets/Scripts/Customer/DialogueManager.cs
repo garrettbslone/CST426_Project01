@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (CustomerMove.isStopped == true)
+        if (CustomerMove.isStopped == true && i == 0)
         {
             StartDialogue();
                 
@@ -48,9 +48,16 @@ public class DialogueManager : MonoBehaviour
             i++;
 
         }
-        else
+        else if (i == CustomerMove.my_order.Length)
         {
             orderText.text = "...and thats it.";
+            i++;
+        }
+        else
+        {
+            EndDialogue();
+            Debug.Log("LET'S GRILL");
+            CameraManager.Instance.SwitchViews();
         }
 
 

@@ -48,6 +48,8 @@ public class CheckOrderManager : MonoBehaviour
 
     public void Check()
     {
+        CameraManager.Instance.SwitchViews();
+
         Debug.Log("Expected: ");
         expected.ForEach(Debug.Log);
         Debug.Log("\nEntered: ");
