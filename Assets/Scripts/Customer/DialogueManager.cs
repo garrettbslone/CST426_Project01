@@ -59,7 +59,8 @@ public class DialogueManager : MonoBehaviour
 
 
         }
-        else if(i == CustomerMove.my_order.Length)
+        else if (i == CustomerMove.my_order.Length)
+
         {
             orderText.text = "...and thats it.";
             buttonText.text = "End";
