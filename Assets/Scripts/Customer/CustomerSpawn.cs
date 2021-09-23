@@ -5,7 +5,9 @@ using UnityEngine;
 public class CustomerSpawn : MonoBehaviour
 {
     public GameObject customer;
-    private bool isSpawned = false;
+    public bool isSpawned = false;
+
+    public DialogueManager dial;
 
 
     // Start is called before the first frame update
@@ -21,6 +23,9 @@ public class CustomerSpawn : MonoBehaviour
         {
             Instantiate(customer, this.transform.position, this.transform.rotation);
             isSpawned = true;
+            dial.endDialogue = false;
+            dial.orderText.text = "Hello! I would like one burger please with: ";
+            dial.buttonText.text = "Next >>";
         }
         
     }
