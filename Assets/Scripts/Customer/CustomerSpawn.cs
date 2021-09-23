@@ -5,13 +5,16 @@ using UnityEngine;
 public class CustomerSpawn : MonoBehaviour
 {
     public GameObject customer;
+    GameObject activeCustomer;
     private bool isSpawned = false;
+
+    public static CustomerSpawn Instance {get; private set;}
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -19,9 +22,15 @@ public class CustomerSpawn : MonoBehaviour
     {
         if (isSpawned == false)
         {
-            Instantiate(customer, this.transform.position, this.transform.rotation);
+            activeCustomer = Instantiate(customer, this.transform.position, this.transform.rotation);
             isSpawned = true;
         }
         
+    }
+
+    public void Respawn()
+    {
+        Destroy(activeCustomer);
+        isSpawned = false;
     }
 }

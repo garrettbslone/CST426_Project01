@@ -12,8 +12,11 @@ public class DialogueManager : MonoBehaviour
 
     public Button nextButton;
 
+    public static DialogueManager Instance { get; private set; }
+
     void Start()
     {
+        Instance = this;
         Button btn = nextButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
     }
@@ -22,17 +25,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (CustomerMove.isStopped == true && i == 0)
         {
-            StartDialogue();
-                
+            StartDialogue();     
         }
 
     }
 
     public void StartDialogue()
     {
+        orderText.text = "Hello! I would like one burger please with: ";
         animator.SetBool("IsOpen", true);
-
-        
     }
 
     public void EndDialogue()
@@ -59,7 +60,10 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("LET'S GRILL");
             CameraManager.Instance.SwitchViews();
         }
+    }
 
-
+    public void ResetDialogue()
+    {
+        i = 0;
     }
 }

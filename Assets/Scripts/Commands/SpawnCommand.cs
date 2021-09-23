@@ -23,7 +23,7 @@ public class SpawnCommand : CommandManager.ICommand
 
     public void Undo()
     {
-         CheckOrderManager.Instance.RemoveIngredientEntered(ingredient.GetComponent<Ingredient>().type);
+        CheckOrderManager.Instance.RemoveIngredientEntered(ingredient.GetComponent<Ingredient>().type);
         GameObject.Destroy(ingredient);   
     }
 

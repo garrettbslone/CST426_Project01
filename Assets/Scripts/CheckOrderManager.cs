@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CheckOrderManager : MonoBehaviour
 {
-    private static Stack<string> expected;
+    private static string[] expected;
     private static Stack<string> entered;
     
     public static CheckOrderManager Instance { get; private set; }
@@ -22,7 +22,7 @@ public class CheckOrderManager : MonoBehaviour
     void Start()
     {
         // TODO: get expected from scene
-        expected = new Stack<string>();
+        // expected = new List<string>();
         entered = new Stack<string>();
         
         // TODO: dynamically update timer
@@ -49,6 +49,7 @@ public class CheckOrderManager : MonoBehaviour
     public void Check()
     {
         CameraManager.Instance.SwitchViews();
+        Array.Reverse(expected);
 
         Debug.Log("Expected: ");
         // expected.ForEach(Debug.Log);
@@ -73,6 +74,10 @@ public class CheckOrderManager : MonoBehaviour
             Debug.Log("You were incorrect!");
             GamePlayManager.Instance.Strike();
         }
+        // Clear everything
+        CustomerSpawn.Instance.Respawn();
+        CommandManager.Instance.ClearAll();
+        DialogueManager.Instance.ResetDialogue();
     }
     
     public void AddIngredientEntered(string ingredient)
@@ -87,7 +92,7 @@ public class CheckOrderManager : MonoBehaviour
         entered.Pop();
     }
 
-    public void SetExpected(Stack<string> newExpected)
+    public void SetExpected(string[] newExpected)
     {
         expected = newExpected;
     }
