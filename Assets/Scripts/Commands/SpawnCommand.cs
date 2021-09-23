@@ -17,13 +17,13 @@ public class SpawnCommand : CommandManager.ICommand
     {
         ingredient = GameObject.Instantiate(this.ingredient, spawner.transform);
         ingredient.transform.position = spawner.transform.position;
-        CheckOrderManager.Instance.AddIngredientEntered(ingredient.GetComponent<Ingredient>());
+        CheckOrderManager.Instance.AddIngredientEntered(ingredient.GetComponent<Ingredient>().type);
         CommandManager.Instance.AddCommand(this);
     }
 
     public void Undo()
     {
-         CheckOrderManager.Instance.RemoveIngredientEntered(ingredient.GetComponent<Ingredient>());
+         CheckOrderManager.Instance.RemoveIngredientEntered(ingredient.GetComponent<Ingredient>().type);
         GameObject.Destroy(ingredient);   
     }
 
