@@ -45,7 +45,7 @@ public class DialogueManager : MonoBehaviour
     {
         if(i < CustomerMove.my_order.Length)
         {
-            orderText.text = CustomerMove.my_order[i];
+            orderText.text = (i + 1) + ": " + CustomerMove.my_order[i];
             i++;
 
         }
