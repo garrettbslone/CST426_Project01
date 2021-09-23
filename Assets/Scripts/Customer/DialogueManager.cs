@@ -26,22 +26,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (CustomerMove.isStopped == true && endDialogue == false)
         {
-<<<<<<< Updated upstream
             StartDialogue();                
-=======
-            StartDialogue();
->>>>>>> Stashed changes
         }
 
     }
 
     public void StartDialogue()
     {
-<<<<<<< Updated upstream
         animator.SetBool("IsOpen", true);        
-=======
-        animator.SetBool("IsOpen", true);
->>>>>>> Stashed changes
+
     }
 
     public void EndDialogue()
@@ -53,11 +46,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (i < CustomerMove.my_order.Length)
         {
-<<<<<<< Updated upstream
             if(i > 0 && (CustomerMove.my_order[i] == CustomerMove.my_order[i - 1]))
-=======
-            if (i > 0 && (CustomerMove.my_order[i] == CustomerMove.my_order[i - 1]))
->>>>>>> Stashed changes
             {
                 orderText.text = "another " + CustomerMove.my_order[i];
 
@@ -70,11 +59,7 @@ public class DialogueManager : MonoBehaviour
 
 
         }
-<<<<<<< Updated upstream
         else if(i == CustomerMove.my_order.Length)
-=======
-        else if (i == CustomerMove.my_order.Length)
->>>>>>> Stashed changes
         {
             orderText.text = "...and thats it.";
             buttonText.text = "End";
