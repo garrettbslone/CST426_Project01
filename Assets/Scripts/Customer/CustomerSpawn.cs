@@ -5,8 +5,10 @@ using UnityEngine;
 public class CustomerSpawn : MonoBehaviour
 {
     public GameObject customer;
+
     GameObject activeCustomer;
-    private bool isSpawned = false;
+    public bool isSpawned = false;
+    public DialogueManager dial;
 
     public static CustomerSpawn Instance {get; private set;}
 
@@ -24,6 +26,9 @@ public class CustomerSpawn : MonoBehaviour
         {
             activeCustomer = Instantiate(customer, this.transform.position, this.transform.rotation);
             isSpawned = true;
+            dial.endDialogue = false;
+            dial.orderText.text = "Hello! I would like one burger please with: ";
+            dial.buttonText.text = "Next >>";
         }
         
     }

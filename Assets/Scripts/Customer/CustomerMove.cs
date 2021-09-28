@@ -26,7 +26,7 @@ public class CustomerMove : MonoBehaviour
     void Update()
     {
         
-        if (this.transform.position.x < GameObject.Find("customer waypoint").transform.position.x)
+        if (this.transform.position.z < GameObject.Find("customer waypoint").transform.position.z)
         {
             speed = 0.0f;
             isStopped = true;

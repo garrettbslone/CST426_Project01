@@ -7,27 +7,33 @@ public class DialogueManager : MonoBehaviour
 {
     int i = 0;
     public Text orderText;
+    public Text buttonText;
 
     public Animator animator;
 
     public Button nextButton;
 
+
     public static DialogueManager Instance { get; private set; }
+
+    public CustomerSpawn cust;
+    public bool endDialogue;
+
 
     void Start()
     {
         Instance = this;
         Button btn = nextButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
+        endDialogue = false;
     }
 
     void Update()
     {
-        if (CustomerMove.isStopped == true && i == 0)
+        if (CustomerMove.isStopped == true && endDialogue == false)
         {
-            StartDialogue();     
+            StartDialogue();                
         }
-
     }
 
     public void StartDialogue()
@@ -43,16 +49,35 @@ public class DialogueManager : MonoBehaviour
 
     void OnClick()
     {
-        if(i < CustomerMove.my_order.Length)
+        if (i < CustomerMove.my_order.Length)
         {
-            orderText.text = (i + 1) + ": " + CustomerMove.my_order[i];
+            if(i > 0 && (CustomerMove.my_order[i] == CustomerMove.my_order[i - 1]))
+            {
+                orderText.text = "another " + CustomerMove.my_order[i];
+
+            }
+            else
+            {
+                orderText.text = CustomerMove.my_order[i];
+            }
             i++;
+
 
         }
         else if (i == CustomerMove.my_order.Length)
         {
             orderText.text = "...and thats it.";
+            buttonText.text = "End";
             i++;
+        }
+        else
+        {
+            endDialogue = true;
+            i = 0;
+            EndDialogue();
+            Destroy(GameObject.FindWithTag("Customer"));
+            cust.isSpawned = false;
+            CustomerMove.isStopped = false;
         }
         else
         {

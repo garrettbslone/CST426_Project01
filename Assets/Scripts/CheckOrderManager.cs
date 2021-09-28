@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Util;
 
 public class CheckOrderManager : MonoBehaviour
 {
@@ -10,8 +11,7 @@ public class CheckOrderManager : MonoBehaviour
     
     public static CheckOrderManager Instance { get; private set; }
 
-    private float timeRemaining;
-    private bool timerRunning;
+    private Timer timer;
 
     private void Awake()
     {
@@ -24,26 +24,30 @@ public class CheckOrderManager : MonoBehaviour
         // TODO: get expected from scene
         // expected = new List<string>();
         entered = new Stack<string>();
-        
-        // TODO: dynamically update timer
-        timeRemaining = 100;
-        timerRunning = true;
+        timer = new Timer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!timerRunning) return;
-        if (timeRemaining > 0)
+        if (!this.timer.IsRunning())
         {
-            timeRemaining -= Time.deltaTime;
-        }
-        else
+            GamePlayManager.Instance.Time(this.timer.GetTimeRemaining());
+            return;
+        };
+
+        float rem = this.timer.Tick();
+        
+        if (rem <= 0f)
         {
+            this.timer.Stop();
             Debug.Log("Time has run out. Checking order now!");
-            timerRunning = false;
             Check();
+
+            rem = 0f;
         }
+        
+        GamePlayManager.Instance.Time(rem);
     }
 
     public void Check()
@@ -64,10 +68,15 @@ public class CheckOrderManager : MonoBehaviour
             Debug.Log(s);
         }
 
+        bool correct = false;
+        
         if (entered.SequenceEqual(expected))
         {
             Debug.Log("You were correct!");
             GamePlayManager.Instance.Score();
+            
+            this.timer.Dec();
+            correct = true;
         }
         else
         {
@@ -78,6 +87,17 @@ public class CheckOrderManager : MonoBehaviour
         CustomerSpawn.Instance.Respawn();
         CommandManager.Instance.ClearAll();
         DialogueManager.Instance.ResetDialogue();
+
+        if (correct || 
+            (!this.timer.IsRunning() && this.timer.GetTimeRemaining() <= 0.0f))
+        {
+            this.timer.Reset();
+        }
+    }
+
+    private static void AddIngredient(Ingredient ingredient, List<Ingredient> ingredients)
+    {
+        ingredients.Add(ingredient);
     }
     
     public void AddIngredientEntered(string ingredient)
