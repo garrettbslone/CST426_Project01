@@ -21,8 +21,6 @@ public class CheckOrderManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TODO: get expected from scene
-        // expected = new List<string>();
         entered = new Stack<string>();
         timer = new Timer();
     }
@@ -87,12 +85,7 @@ public class CheckOrderManager : MonoBehaviour
         CustomerSpawn.Instance.Respawn();
         CommandManager.Instance.ClearAll();
         DialogueManager.Instance.ResetDialogue();
-
-        if (correct || 
-            (!this.timer.IsRunning() && this.timer.GetTimeRemaining() <= 0.0f))
-        {
-            this.timer.Reset();
-        }
+        this.timer.Reset();
     }
 
     private static void AddIngredient(Ingredient ingredient, List<Ingredient> ingredients)

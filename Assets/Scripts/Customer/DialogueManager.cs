@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (CustomerMove.isStopped == true && endDialogue == false)
+        if (CustomerMove.isStopped == true && endDialogue == false && i == 0)
         {
             StartDialogue();                
         }
@@ -73,16 +73,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             endDialogue = true;
-            i = 0;
             EndDialogue();
-            Destroy(GameObject.FindWithTag("Customer"));
-            cust.isSpawned = false;
-            CustomerMove.isStopped = false;
-        }
-        else
-        {
-            EndDialogue();
-            Debug.Log("LET'S GRILL");
             CameraManager.Instance.SwitchViews();
         }
     }
@@ -90,5 +81,9 @@ public class DialogueManager : MonoBehaviour
     public void ResetDialogue()
     {
         i = 0;
+        Destroy(GameObject.FindWithTag("Customer"));
+        cust.isSpawned = false;
+        CustomerMove.isStopped = false;
+        
     }
 }
