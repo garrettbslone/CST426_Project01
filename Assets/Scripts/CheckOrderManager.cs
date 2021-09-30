@@ -6,12 +6,12 @@ using Util;
 
 public class CheckOrderManager : MonoBehaviour
 {
-    private static List<Ingredient> expected;
-    private static List<Ingredient> entered;
+    private static string[] expected;
+    private static Stack<string> entered;
     
     public static CheckOrderManager Instance { get; private set; }
 
-    private Timer timer;
+    public Timer timer;
 
     private void Awake()
     {
@@ -21,11 +21,9 @@ public class CheckOrderManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TODO: get expected from scene
-        expected = new List<Ingredient>();
-        entered = new List<Ingredient>();
-
+        entered = new Stack<string>();
         timer = new Timer();
+        timer.Stop();
     }
 
     // Update is called once per frame
@@ -53,7 +51,21 @@ public class CheckOrderManager : MonoBehaviour
 
     public void Check()
     {
-        bool correct = false;
+        CameraManager.Instance.SwitchViews();
+        Array.Reverse(expected);
+
+        Debug.Log("Expected: ");
+        // expected.ForEach(Debug.Log);
+        foreach (string s in expected)
+        {
+            Debug.Log(s);
+        }
+        Debug.Log("\nEntered: ");
+        // entered.ForEach(Debug.Log);
+        foreach (string s in entered)
+        {
+            Debug.Log(s);
+        }
         
         if (entered.SequenceEqual(expected))
         {
@@ -61,19 +73,18 @@ public class CheckOrderManager : MonoBehaviour
             GamePlayManager.Instance.Score();
             
             this.timer.Dec();
-            correct = true;
         }
         else
         {
             Debug.Log("You were incorrect!");
             GamePlayManager.Instance.Strike();
         }
-
-        if (correct || 
-            (!this.timer.IsRunning() && this.timer.GetTimeRemaining() <= 0.0f))
-        {
-            this.timer.Reset();
-        }
+        // Clear everything
+        CustomerSpawn.Instance.Respawn();
+        CommandManager.Instance.ClearAll();
+        DialogueManager.Instance.ResetDialogue();
+        this.timer.Reset();
+        this.timer.Stop();
     }
 
     private static void AddIngredient(Ingredient ingredient, List<Ingredient> ingredients)
@@ -81,28 +92,20 @@ public class CheckOrderManager : MonoBehaviour
         ingredients.Add(ingredient);
     }
     
-    public void AddIngredientExpected(Ingredient ingredient)
+    public void AddIngredientEntered(string ingredient)
     {
-        AddIngredient(ingredient, expected);
+        // entered.Add(ingredient);
+        entered.Push(ingredient);
     }
     
-    public void AddIngredientEntered(Ingredient ingredient)
+    public void RemoveIngredientEntered(string ingredient)
     {
-        AddIngredient(ingredient, entered);
+        //entered.Remove(ingredient);
+        entered.Pop();
     }
-    
-    private static void RemoveIngredient(Ingredient ingredient, List<Ingredient> ingredients)
+
+    public void SetExpected(string[] newExpected)
     {
-        ingredients.Remove(ingredient);
-    }
-    
-    public void RemoveIngredientExpected(Ingredient ingredient)
-    {
-        RemoveIngredient(ingredient, expected);
-    }
-    
-    public void RemoveIngredientEntered(Ingredient ingredient)
-    {
-        RemoveIngredient(ingredient, entered);
+        expected = newExpected;
     }
 }

@@ -13,12 +13,16 @@ public class DialogueManager : MonoBehaviour
 
     public Button nextButton;
 
-    public CustomerSpawn cust;
 
+    public static DialogueManager Instance { get; private set; }
+
+    public CustomerSpawn cust;
     public bool endDialogue;
+
 
     void Start()
     {
+        Instance = this;
         Button btn = nextButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
         endDialogue = false;
@@ -26,17 +30,16 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (CustomerMove.isStopped == true && endDialogue == false)
+        if (CustomerMove.isStopped == true && endDialogue == false && i == 0)
         {
             StartDialogue();                
         }
-
     }
 
     public void StartDialogue()
     {
+        orderText.text = "Hello! I would like one burger please with: ";
         animator.SetBool("IsOpen", true);
-
     }
 
     public void EndDialogue()
@@ -62,7 +65,6 @@ public class DialogueManager : MonoBehaviour
 
         }
         else if (i == CustomerMove.my_order.Length)
-
         {
             orderText.text = "...and thats it.";
             buttonText.text = "End";
@@ -71,13 +73,18 @@ public class DialogueManager : MonoBehaviour
         else
         {
             endDialogue = true;
-            i = 0;
             EndDialogue();
-            Destroy(GameObject.FindWithTag("Customer"));
-            cust.isSpawned = false;
-            CustomerMove.isStopped = false;
+            CameraManager.Instance.SwitchViews();
+            CheckOrderManager.Instance.timer.Start();
         }
+    }
 
-
+    public void ResetDialogue()
+    {
+        i = 0;
+        Destroy(GameObject.FindWithTag("Customer"));
+        cust.isSpawned = false;
+        CustomerMove.isStopped = false;
+        
     }
 }

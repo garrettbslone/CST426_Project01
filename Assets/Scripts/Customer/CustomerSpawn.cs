@@ -5,15 +5,18 @@ using UnityEngine;
 public class CustomerSpawn : MonoBehaviour
 {
     public GameObject customer;
-    public bool isSpawned = false;
 
+    GameObject activeCustomer;
+    public bool isSpawned = false;
     public DialogueManager dial;
+
+    public static CustomerSpawn Instance {get; private set;}
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -21,12 +24,18 @@ public class CustomerSpawn : MonoBehaviour
     {
         if (isSpawned == false)
         {
-            Instantiate(customer, this.transform.position, this.transform.rotation);
+            activeCustomer = Instantiate(customer, this.transform.position, this.transform.rotation);
             isSpawned = true;
             dial.endDialogue = false;
             dial.orderText.text = "Hello! I would like one burger please with: ";
             dial.buttonText.text = "Next >>";
         }
         
+    }
+
+    public void Respawn()
+    {
+        Destroy(activeCustomer);
+        isSpawned = false;
     }
 }

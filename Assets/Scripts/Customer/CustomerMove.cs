@@ -18,7 +18,8 @@ public class CustomerMove : MonoBehaviour
     void Awake()
     {
         my_order = CustomerOrder.OrderMaker2();
-
+        CheckOrderManager.Instance.SetExpected(my_order);
+        isStopped = false;
     }
 
     // Update is called once per frame

@@ -34,4 +34,12 @@ public class CommandManager : MonoBehaviour
         ICommand command = commands.Pop();
         command.Undo();
     }
+
+    public void ClearAll()
+    {
+        while (commands.Count > 0)
+        {
+            Undo();
+        }
+    }
 }
