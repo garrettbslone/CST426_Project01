@@ -11,7 +11,7 @@ public class CheckOrderManager : MonoBehaviour
     
     public static CheckOrderManager Instance { get; private set; }
 
-    private Timer timer;
+    public Timer timer;
 
     private void Awake()
     {
@@ -23,6 +23,7 @@ public class CheckOrderManager : MonoBehaviour
     {
         entered = new Stack<string>();
         timer = new Timer();
+        timer.Stop();
     }
 
     // Update is called once per frame
@@ -65,8 +66,6 @@ public class CheckOrderManager : MonoBehaviour
         {
             Debug.Log(s);
         }
-
-        bool correct = false;
         
         if (entered.SequenceEqual(expected))
         {
@@ -74,7 +73,6 @@ public class CheckOrderManager : MonoBehaviour
             GamePlayManager.Instance.Score();
             
             this.timer.Dec();
-            correct = true;
         }
         else
         {
@@ -86,6 +84,7 @@ public class CheckOrderManager : MonoBehaviour
         CommandManager.Instance.ClearAll();
         DialogueManager.Instance.ResetDialogue();
         this.timer.Reset();
+        this.timer.Stop();
     }
 
     private static void AddIngredient(Ingredient ingredient, List<Ingredient> ingredients)

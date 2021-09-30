@@ -75,6 +75,7 @@ public class DialogueManager : MonoBehaviour
             endDialogue = true;
             EndDialogue();
             CameraManager.Instance.SwitchViews();
+            CheckOrderManager.Instance.timer.Start();
         }
     }
 
