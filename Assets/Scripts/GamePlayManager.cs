@@ -11,7 +11,8 @@ public class GamePlayManager : MonoBehaviour
     
     public Canvas grillCanvas;
 
-    private const int MAX_STRIKES = 3;
+    public const int MAX_STRIKES = 3;
+    public const int MAX_SCORE = 5;
 
     public static GamePlayManager Instance { get; private set; }
 
@@ -37,6 +38,11 @@ public class GamePlayManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public int GetScore()
+    {
+        return _score;
     }
 
     public void Score()

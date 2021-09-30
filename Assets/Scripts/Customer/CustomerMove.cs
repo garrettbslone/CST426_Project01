@@ -17,7 +17,7 @@ public class CustomerMove : MonoBehaviour
 
     void Awake()
     {
-        my_order = CustomerOrder.OrderMaker2();
+        my_order = CustomerOrder.OrderMaker(GamePlayManager.Instance.GetScore());
         CheckOrderManager.Instance.SetExpected(my_order);
         isStopped = false;
     }
