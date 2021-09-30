@@ -8,6 +8,8 @@ public class GamePlayManager : MonoBehaviour
 {
     private Text score, strikes, timer;
     private int _score, _strikes;
+    
+    public Canvas grillCanvas;
 
     private const int MAX_STRIKES = 3;
 
@@ -19,6 +21,9 @@ public class GamePlayManager : MonoBehaviour
         score = GameObject.Find("ScoreText").GetComponent<Text>();
         strikes = GameObject.Find("StrikesText").GetComponent<Text>();
         timer = GameObject.Find("TimerText").GetComponent<Text>();
+        grillCanvas = GameObject.Find("GrillCanvas").GetComponent<Canvas>();
+
+        grillCanvas.enabled = false;
 
         _score = 0;
         _strikes = 0;
@@ -49,5 +54,17 @@ public class GamePlayManager : MonoBehaviour
     public void Time(float time)
     {
         timer.text = $"Time Left: {time:0.##}s";
+    }
+
+    public void ToggleMenu()
+    {
+        if (grillCanvas.isActiveAndEnabled)
+        {
+            grillCanvas.enabled = false;
+        } 
+        else
+        {
+            grillCanvas.enabled = true;
+        }
     }
 }

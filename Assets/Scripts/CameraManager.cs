@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     }
     public void SwitchViews()
     {
+        GamePlayManager.Instance.ToggleMenu();
         this.transform.Rotate(new Vector3(0, 180, 0));
     }
 }
