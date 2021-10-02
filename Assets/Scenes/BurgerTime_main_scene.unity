@@ -1939,6 +1939,7 @@ GameObject:
   - component: {fileID: 595007085}
   - component: {fileID: 595007084}
   - component: {fileID: 595007083}
+  - component: {fileID: 595007086}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2030,6 +2031,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &595007086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595007081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0289f906c402aaa46a3d3f1a1c9c9849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goButton: {fileID: 1630414230}
+  sceneName: Start Menu
 --- !u!1 &598126684
 GameObject:
   m_ObjectHideFlags: 0

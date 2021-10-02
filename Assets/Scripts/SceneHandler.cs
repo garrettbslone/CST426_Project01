@@ -14,6 +14,7 @@ public class SceneHandler : MonoBehaviour
     {
         Button btn = goButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
+        Time.timeScale = 1;
 
     }
 
