@@ -12,6 +12,9 @@ public class GamePlayManager : MonoBehaviour
     
     public Canvas grillCanvas;
 
+    public Text gameOverText;
+    public Button gameOverButton;
+
     public const int MAX_STRIKES = 3;
     public const int MAX_SCORE = 5;
 
@@ -26,6 +29,9 @@ public class GamePlayManager : MonoBehaviour
         grillCanvas = GameObject.Find("GrillCanvas").GetComponent<Canvas>();
 
         grillCanvas.enabled = false;
+
+        gameOverText.enabled = false;
+        gameOverButton.gameObject.SetActive(false);
 
         _score = 0;
         _strikes = 0;
@@ -55,12 +61,20 @@ public class GamePlayManager : MonoBehaviour
     {
         _score++;
         score.text = "Score: " + _score;
+        if (_score >= 5)
+        {
+            GameOver(true);
+        }
     }
 
     public void Strike()
     {
         _strikes++;
         strikes.text = "Strikes: " + _strikes;
+        if (_strikes >= 3)
+        {
+            GameOver(false);
+        }
     }
 
     public void Time(float time)
@@ -78,5 +92,20 @@ public class GamePlayManager : MonoBehaviour
         {
             grillCanvas.enabled = true;
         }
+    }
+
+    void GameOver(bool victory)
+    {
+        if (victory)
+        {
+            gameOverText.text = "You won!";
+        } else
+        {
+            gameOverText.text = "Game Over!";
+        }
+
+        gameOverText.enabled = true;
+        gameOverButton.gameObject.SetActive(true);
+        UnityEngine.Time.timeScale = 0;
     }
 }
