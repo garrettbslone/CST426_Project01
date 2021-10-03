@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BurgerTime_main_scene.unity
     guid: 3c7cdbbd1e4988d43a4e7cdf3132f71a
-  - enabled: 1
-    path: Assets/Scenes/Game Over.unity
-    guid: 9f54757588e59504784efb2cb751b4e0
   m_configObjects: {}

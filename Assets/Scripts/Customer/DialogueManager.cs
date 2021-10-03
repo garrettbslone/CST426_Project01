@@ -14,11 +14,6 @@ public class DialogueManager : MonoBehaviour
     public Button nextButton;
 
     public CustomerSpawn cust;
-<<<<<<< Updated upstream
-=======
-    public CheckOrderManager check;
-    public bool endDialogue;
->>>>>>> Stashed changes
 
     public bool endDialogue;
 
@@ -41,11 +36,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         animator.SetBool("IsOpen", true);
-<<<<<<< Updated upstream
 
-=======
-        check.checkText.text = "";
->>>>>>> Stashed changes
     }
 
     public void EndDialogue()
@@ -53,30 +44,27 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
     }
 
-    IEnumerator TypeSentence(string sentence)
-    {
-        orderText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            orderText.text += letter;
-            yield return new WaitForSeconds(0.05f);
-        }
-
-    }
-
     void OnClick()
     {
-        StopAllCoroutines();
         if (i < CustomerMove.my_order.Length)
         {
-            StartCoroutine(TypeSentence(CustomerMove.my_order[i]));
+            if(i > 0 && (CustomerMove.my_order[i] == CustomerMove.my_order[i - 1]))
+            {
+                orderText.text = "another " + CustomerMove.my_order[i];
 
+            }
+            else
+            {
+                orderText.text = CustomerMove.my_order[i];
+            }
             i++;
+
+
         }
         else if (i == CustomerMove.my_order.Length)
 
         {
-            StartCoroutine(TypeSentence("... and that's it."));
+            orderText.text = "...and thats it.";
             buttonText.text = "End";
             i++;
         }
@@ -90,15 +78,6 @@ public class DialogueManager : MonoBehaviour
             CustomerMove.isStopped = false;
         }
 
-<<<<<<< Updated upstream
 
-=======
-    public void ResetDialogue()
-    {
-        i = 0;
-        cust.isSpawned = false;
-        CustomerMove.isStopped = false;
-        
->>>>>>> Stashed changes
     }
 }
