@@ -74,6 +74,7 @@ public class CheckOrderManager : MonoBehaviour
         {
             Debug.Log("You were correct!");
             checkText.text = "CORRECT!\nScore + 1";
+            checkText.color = (Color.green);
             GamePlayManager.Instance.Score();
             
             this.timer.Dec();
@@ -82,6 +83,7 @@ public class CheckOrderManager : MonoBehaviour
         {
             Debug.Log("You were incorrect!");
             checkText.text = "INCORRECT!\nStrike + 1";
+            checkText.color = (Color.red);
             GamePlayManager.Instance.Strike();
         }
         // Clear everything

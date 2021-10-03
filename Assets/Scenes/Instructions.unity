@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -766,14 +766,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- Take the customers order -
+  m_Text: '- Take the customer''s order -
 
     - Assembly order is important -
 
     -
-    Make your buger from the bottom up -
+    Make your burger from the bottom up -
 
-    - 3 strikes and it''s GAME OVER -'
+    - 3 strikes and it''s GAME OVER -
+
+    -
+    5 points to win -'
 --- !u!222 &1483496330
 CanvasRenderer:
   m_ObjectHideFlags: 0
