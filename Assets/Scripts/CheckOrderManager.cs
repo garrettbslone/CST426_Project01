@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Util;
+using UnityEngine.UI;
 
 public class CheckOrderManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CheckOrderManager : MonoBehaviour
     public static CheckOrderManager Instance { get; private set; }
 
     public Timer timer;
+
+    public Text checkText;
 
     private void Awake()
     {
@@ -70,6 +73,7 @@ public class CheckOrderManager : MonoBehaviour
         if (entered.SequenceEqual(expected))
         {
             Debug.Log("You were correct!");
+            checkText.text = "CORRECT!\nScore + 1";
             GamePlayManager.Instance.Score();
             
             this.timer.Dec();
@@ -77,6 +81,7 @@ public class CheckOrderManager : MonoBehaviour
         else
         {
             Debug.Log("You were incorrect!");
+            checkText.text = "INCORRECT!\nStrike + 1";
             GamePlayManager.Instance.Strike();
         }
         // Clear everything

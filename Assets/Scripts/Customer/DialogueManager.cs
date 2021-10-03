@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     public CustomerSpawn cust;
+    public CheckOrderManager check;
     public bool endDialogue;
 
 
@@ -40,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     {
         orderText.text = "Hello! I would like one burger please with: ";
         animator.SetBool("IsOpen", true);
+        check.checkText.text = "";
     }
 
     public void EndDialogue()
@@ -47,26 +49,30 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
     }
 
+    IEnumerator TypeSentence(string sentence)
+    {
+        orderText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            orderText.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+    }
+
     void OnClick()
     {
+        StopAllCoroutines();
         if (i < CustomerMove.my_order.Length)
         {
-            if(i > 0 && (CustomerMove.my_order[i] == CustomerMove.my_order[i - 1]))
-            {
-                orderText.text = "another " + CustomerMove.my_order[i];
+            StartCoroutine(TypeSentence(CustomerMove.my_order[i]));
 
-            }
-            else
-            {
-                orderText.text = CustomerMove.my_order[i];
-            }
             i++;
-
-
         }
         else if (i == CustomerMove.my_order.Length)
+
         {
-            orderText.text = "...and thats it.";
+            StartCoroutine(TypeSentence("... and that's it."));
             buttonText.text = "End";
             i++;
         }
@@ -88,3 +94,4 @@ public class DialogueManager : MonoBehaviour
         
     }
 }
+

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerOrder : MonoBehaviour
 {
-    static string[] ingredients = new string[4] {"Tomato", "Onion", "Lettuce", "Cheese" };
+    static string[] ingredients = new string[5] {"Tomato", "Onion", "Lettuce", "Cheese", "Patty" };
 
     public static string[] OrderMaker(int score)
     {
@@ -18,7 +18,7 @@ public class CustomerOrder : MonoBehaviour
 
         for (int i = 2; i < score - 1; i++)
         {
-            order[i] = ingredients[(int)Random.Range(0.0f, 4.0f)];
+            order[i] = ingredients[(int)Random.Range(0.0f, 5.0f)];
         }
 
         order[score - 1] = "Bun";

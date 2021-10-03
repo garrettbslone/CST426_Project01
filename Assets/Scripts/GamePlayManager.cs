@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class GamePlayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_strikes == 3)
+        {
+            SceneManager.LoadScene("Game Over");
+
+        }
     }
 
     private void Awake()
