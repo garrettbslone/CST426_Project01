@@ -37,16 +37,6 @@ public class GamePlayManager : MonoBehaviour
         _strikes = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_strikes == 3)
-        {
-            SceneManager.LoadScene("Game Over");
-
-        }
-    }
-
     private void Awake()
     {
         Instance = this;
