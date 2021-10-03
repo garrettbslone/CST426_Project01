@@ -10,7 +10,7 @@ public class CustomerOrder : MonoBehaviour
     {
         Debug.Log(score);
 
-        score = 5 + (score % GamePlayManager.MAX_SCORE);
+        score = 3 + (score % GamePlayManager.MAX_SCORE);
         string[] order = new string[score];
 
         order[0] = "Bun";
